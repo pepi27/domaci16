@@ -43,11 +43,8 @@ public class KupiProizvodServlet extends HttpServlet {
         double ukupno = 0; 
 		for(Proizvod p : proizvodi) {
 			String novaKolicina = "kolicina" + p.getId();
-			System.out.println(request.getParameter("kolicina1"));
-			
 			if(request.getParameter(novaKolicina) != null && !request.getParameter(novaKolicina).equals("")) {
 				long kolicina = Long.parseLong(request.getParameter(novaKolicina));
-				System.out.println(novaKolicina);
 				pout.println("<h4> Cena je " + p.getCena() * kolicina + " naziv je " + p.getNaziv() + "</h4>");
 				ukupno += p.getCena() * kolicina; 
 			}
