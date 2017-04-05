@@ -4,6 +4,8 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Vector;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
@@ -74,5 +76,46 @@ public class ProizvodiDAO {
 		}
 		
 		return retVal; 
+	}
+	
+	public boolean dodajProizvod (String naziv, double cena, long idKategorije) {
+		boolean retVal = false;
+		try {
+			Connection conn = ConnectionManager.getConnection();
+			String selectSQL = "INSERT INTO Proizvod (naziv, cena, kategorija_id) values(?, ?, ?)";
+			PreparedStatement preparedStatement = conn.prepareStatement(selectSQL);
+			preparedStatement.setString(1, naziv);
+			preparedStatement.setDouble(2, cena);
+			preparedStatement.setLong(3, idKategorije);
+			
+			if (preparedStatement.executeUpdate() == 1)
+				retVal = true;
+			preparedStatement.close();
+
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		}
+		return retVal; 
+	}
+
+	public boolean obrisiProizvod(long proizvodID) {
+
+		boolean retVal = false; 
+		try {
+			Connection conn = ConnectionManager.getConnection();
+			String selectSQL = "DELETE FROM proizvod WHERE id=?";
+			PreparedStatement preparedStatement = conn.prepareStatement(selectSQL);
+			preparedStatement.setLong(1, proizvodID);
+			
+			if (preparedStatement.executeUpdate() == 1)
+				retVal = true;
+			preparedStatement.close();
+
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		}
+		return retVal; 
+		
+		
 	}
 }

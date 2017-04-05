@@ -74,4 +74,24 @@
     <servlet-name>DodajKorisnikaServlet</servlet-name>
     <url-pattern>/DodajKorisnikaServlet</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>DodajProizvodServlet</display-name>
+    <servlet-name>DodajProizvodServlet</servlet-name>
+    <servlet-class>com.webshop.servleti.DodajProizvodServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>DodajProizvodServlet</servlet-name>
+    <url-pattern>/DodajProizvodServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ObrisiProizvodServlet</display-name>
+    <servlet-name>ObrisiProizvodServlet</servlet-name>
+    <servlet-class>com.webshop.servleti.ObrisiProizvodServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ObrisiProizvodServlet</servlet-name>
+    <url-pattern>/ObrisiProizvodServlet</url-pattern>
+  </servlet-mapping>
 </web-app>
